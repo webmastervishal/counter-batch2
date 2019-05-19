@@ -13,7 +13,8 @@ class CounterContainer extends React.Component {
             count: 0
         };
 
-        console.log('Inside the constructor');
+        console.log('Inside the constructor',this);
+        this.incHandler = this.incHandler.bind(this);
     }
 
     //second lifecycle method
@@ -22,9 +23,21 @@ class CounterContainer extends React.Component {
     }
 
     
-    incHandler = () => {
-       this.setState({
+    // incHandler = () => {
+    //    this.setState({
+    //         count: this.state.count + 1
+    //     });
+    // }
+
+    incHandler() {
+        this.setState({
             count: this.state.count + 1
+        });
+    }
+
+    decHandler = () => {
+        this.setState({
+            count: this.state.count - 1
         });
     }
 
@@ -45,6 +58,7 @@ class CounterContainer extends React.Component {
             <Counter 
                 countvalue = {this.state.count}
                 incHandler = {this.incHandler}
+                decHandler = {this.decHandler}
             />
         )
     }
